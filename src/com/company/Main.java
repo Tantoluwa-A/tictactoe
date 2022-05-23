@@ -176,7 +176,7 @@ public class Main {
             }
         }
         int count = 0;
-        if (!a && !b && !c && !d && !e && !f && !g && !h && !i && !j && !k && !l && !m && !n && !o && !p && !r && !s) {
+        if (!a && !b && !c && !d && !e && !f && !g && !h && !i && !j && !k && !l && !m && !n && !o && !p && !XAndOWins && !impossible) {
             for (int q = 0; q < cellArray.length(); q++) {
                 if (ch[q] == '_') {
                     count++;
