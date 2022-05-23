@@ -89,7 +89,7 @@ public class Main {
         boolean o = ch[0] == ch[4] && ch[0] == ch[8] && ch[0] == 'O';
         boolean p = ch[2] == ch[4] && ch[2] == ch[6] && ch[2] == 'O';
 
-        boolean r = a && b || a && c || a && e || a && f || a && g || a && h || a && i || a && j || a && k
+        boolean XAndOWins = a && b || a && c || a && e || a && f || a && g || a && h || a && i || a && j || a && k
                 || a && l || a && m || a && n || a && o || a && p || b && c || b && d || b && f || b && g
                 || b && h || b && i || b && j || b && k || b && l || b && m || b && n || b && o ||
                 b && p || c && d || c && e || c && g || c && h || c && i || c && j || c && k || c && l || c && m
@@ -102,12 +102,12 @@ public class Main {
                 || i && n || i && o || i && p || j && k || j && l || j && m || j && n || j && o || j && p ||
                 k && l || k && m || k && n || k && o || k && p || l && m || l && n || l && o || l && p || m && n
                 || m && p || n && o || o && p;
-        boolean s = Math.abs(countX - countO) > 1;
+        boolean impossible = Math.abs(countX - countO) > 1;
 
-        if (r) {
+        if (XAndOWins) {
             System.out.println("Impossible");
         }
-        else if (s) {
+        else if (impossible) {
             System.out.println("Impossible");
         } else {
             if (a) {
