@@ -3,6 +3,7 @@ package com.company;
 import java.util.Scanner;
 
 public class Main {
+    static boolean gameHasEnded = false;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -28,7 +29,6 @@ public class Main {
         }
         System.out.println("---------");
         boolean player1 = true;
-        boolean gameHasEnded = false;
         while (!gameHasEnded) {
             if (player1) {
                 element = 'X';
@@ -68,7 +68,7 @@ public class Main {
             }
             System.out.println("---------");
             Win(array);
-            Draw(array);
+            draw(array);
             for (int i = 0; i < 9; i++) {
                 if (ch[i] == 'X') {
                     countX++;
@@ -79,26 +79,29 @@ public class Main {
             }
             boolean impossible = Math.abs(countX - countO) > 1;
             if (impossible) {
-                System.out.println("Impossible");
+                System.out.println("Impossible");;
             }
-            if (Win(array)) {
+            if (draw(array)) {
                 gameHasEnded = true;
+            } else {
+                player1 = !player1;
             }
         }
     }
-
-    private static void Draw(char[][] array) {
-        int count = 0;
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                if (array[i][j] == '_') {
-                    count++;
+//  This method checks if it is a draw
+    private static boolean draw(char[][] array) {
+            int count = 0;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (array[i][j] == '_') {
+                        count++;
+                    }
                 }
             }
-        }
-        if (count < 1) {
-            System.out.println("Draw");
-        }
+            if (count < 1) {
+                System.out.println("Draw");
+            }
+        return false;
     }
 
     private static boolean Win(char[][] array) {
@@ -106,8 +109,10 @@ public class Main {
             if (array[i][0] == array[i][1] && array[i][0] == array[i][2]) {
                 if (array[i][0] == 'X') {
                     System.out.println("X wins");
+                    gameHasEnded = true;
                 } else if (array[i][0] == 'O') {
                     System.out.println("O wins");
+                    gameHasEnded = true;
                 }
             }
         }
@@ -115,23 +120,29 @@ public class Main {
             if (array[0][j] == array[1][j] && array[0][j] == array[2][j]) {
                 if (array[0][j] == 'X') {
                     System.out.println("X wins");
+                    gameHasEnded = true;
                 } else if (array[0][j] == 'O') {
                     System.out.println("O wins");
+                    gameHasEnded = true;
                 }
             }
         }
         if (array[0][0] == array[1][1] && array[0][0] == array[2][2]) {
             if (array[0][0] == 'X') {
                 System.out.println("X wins");
+                gameHasEnded = true;
             } else if (array[0][0] == 'O') {
                 System.out.println("O wins");
+                gameHasEnded = true;
             }
         }
         if (array[0][2] == array[1][1] && array[0][2] == array[2][0]) {
             if (array[0][2] == 'X') {
                 System.out.println("X wins");
+                gameHasEnded = true;
             } else if (array[0][2] == 'O') {
                 System.out.println("O wins");
+                gameHasEnded = true;
             }
         }
         return false;
