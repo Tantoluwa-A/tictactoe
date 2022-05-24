@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class Main {
     static boolean gameHasEnded = false;
+    static boolean win = false;
 
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -90,6 +91,7 @@ public class Main {
     }
 //  This method checks if it is a draw
     private static boolean draw(char[][] array) {
+        if (!win) {
             int count = 0;
             for (int i = 0; i < 3; i++) {
                 for (int j = 0; j < 3; j++) {
@@ -100,7 +102,9 @@ public class Main {
             }
             if (count < 1) {
                 System.out.println("Draw");
+                gameHasEnded = true;
             }
+        }
         return false;
     }
 
@@ -110,9 +114,11 @@ public class Main {
                 if (array[i][0] == 'X') {
                     System.out.println("X wins");
                     gameHasEnded = true;
+                    win = true;
                 } else if (array[i][0] == 'O') {
                     System.out.println("O wins");
                     gameHasEnded = true;
+                    win = true;
                 }
             }
         }
@@ -121,9 +127,11 @@ public class Main {
                 if (array[0][j] == 'X') {
                     System.out.println("X wins");
                     gameHasEnded = true;
+                    win = true;
                 } else if (array[0][j] == 'O') {
                     System.out.println("O wins");
                     gameHasEnded = true;
+                    win = true;
                 }
             }
         }
@@ -131,18 +139,22 @@ public class Main {
             if (array[0][0] == 'X') {
                 System.out.println("X wins");
                 gameHasEnded = true;
+                win = true;
             } else if (array[0][0] == 'O') {
                 System.out.println("O wins");
                 gameHasEnded = true;
+                win = true;
             }
         }
         if (array[0][2] == array[1][1] && array[0][2] == array[2][0]) {
             if (array[0][2] == 'X') {
                 System.out.println("X wins");
                 gameHasEnded = true;
+                win = true;
             } else if (array[0][2] == 'O') {
                 System.out.println("O wins");
                 gameHasEnded = true;
+                win = true;
             }
         }
         return false;
